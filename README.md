@@ -3,7 +3,7 @@
 
 ## Applications
 
-Application|Build|DB|Migration|Project|Description
+Application|Build|DB|DB Migration|Project|Description
 :-|:-|:-|:-|:-|:-
 Gira|Gradle|MySQL|FlyWay|[GiraApp](https://github.com/andy489/Spring_Fundamentals/tree/main/Applications/2020-08-12%20GiraApp/GiraApp)|[GiraApp](https://github.com/andy489/Spring_Fundamentals/blob/main/Applications/2020-08-12%20GiraApp/2020-08-12%20GiraApp%20desc.pdf)
 MyMusicDB|Maven|MySQL|FlyWay|[MyMusicDBApp](https://github.com/andy489/Spring_Fundamentals/blob/main/Applications/2021-02-21%20MyMusicDBApp/2021-02-21%20MyMusicDBApp%20desc.pdf)|[MyMusicDBApp](https://github.com/andy489/Spring_Fundamentals/blob/main/Applications/2021-02-21%20MyMusicDBApp/2021-02-21%20MyMusicDBApp%20desc.pdf)
