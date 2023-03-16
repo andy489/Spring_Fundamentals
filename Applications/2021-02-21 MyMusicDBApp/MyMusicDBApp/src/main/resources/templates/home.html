@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/commons::head}"></head>
+
+<body>
+
+    <header th:replace="~{fragments/commons::header}"></header>
+
+    <main class="p-5 align-content-center bg-blur my-main" th:object="${homeDataModel}">
+
+        <h2 class="text-light border-bottom" th:text="${#aggregates.sum(homeDataModel.getAlbums().![copies])}">
+            Total sold copies of all albums: 10000
+        </h2>
+
+        <div class="row">
+            <div class="col-md-3" th:each="a: *{albums}">
+
+                <div class="card mb-4 box-shadow">
+
+                    <img th:src="${#strings.substring(a.getImgUrl(), 0, 4) == 'http'} ?  ${a.getImgUrl()} : '/img/album/' + ${a.getImgUrl()} +'.png'" class="card-img-top" alt="Thumbnail [100%x225]" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+
+                    <div class="card-body">
+
+                        <div class="text-center">
+                            <p class="card-text border-bottom" th:text="'Name: ' + ${a.getName()}">Name: Name of album</p>
+                            <p class="card-text border-bottom" th:text="'Artist: ' + ${a.getBand()}">Artist: Metallica</p>
+                            <p class="card-text border-bottom" th:text="'Genre: ' + ${a.getGenre()}">Genre: Metal</p>
+                            <p class="card-text border-bottom" th:text="'Price: ' + ${a.getPrice()}">Price: 19.99</p>
+                            <p class="card-text border-bottom" th:text="'Release Date: ' + ${a.getReleaseDate()}">
+                                Release Date:
+                            </p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-sm btn-outline-secondary" th:href="@{/albums/remove(id=${a.getId()})}">
+                                Delete
+                            </a>
+                            </div>
+
+                            <small class="text-muted" th:text="${a.getCopies()} + ' copies'">1000 copies</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <head th:replace="~{fragments/commons::footer}"></head>
+
+</body>
+
+</html>

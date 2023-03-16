@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/coffee_shop
+    username: andreystoev
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #    hibernate:
+    #      ddl-auto: create
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
+#      hibernate:
+#        format_sql: true
+    open-in-view: false
+
+  flyway:
+    locations: classpath:db.migration
+    baseline-on-migrate: true

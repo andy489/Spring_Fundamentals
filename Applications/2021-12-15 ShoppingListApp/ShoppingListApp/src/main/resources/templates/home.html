@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{fragments/commons::head}"></head>
+
+<body>
+
+    <header th:replace="~{fragments/commons::header}"></header>
+
+    <main>
+        <div class="container bg-blur rounded mt-5 mb-4" th:object="${productsByCategory}">
+            <h1>All products to buy</h1>
+            <div class="row mt-3 mb-3">
+                <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto">
+                    <h3 class="mySticky bg-gray text-dark rounded" th:text="${T(com.shoppinglist.model.enumerated.CategoryEnum).FOOD.displayName} +'; total: '+ *{productsPriceMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).FOOD)} +' lv'">
+                        Foods
+                    </h3>
+                    <div class="mt-3 rounded badge-info" th:each="p : *{productsMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).FOOD)}">
+                        <img class="mr-2" th:src="@{/img/food.png}" alt="Food" width="50px" height="50px">
+                        <span th:text="'Name: ' + ${p.name} + '; Price: ' + ${p.price} + ' lv'">
+                            Name: {name} Price: {price} lv
+                        </span>
+                        <a class="ml-3 text-danger" th:href="@{/products/buy(id = ${p.id})}">Buy</a>
+                    </div>
+                </div>
+                <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto">
+                    <h3 class="mySticky bg-gray text-dark rounded" th:text="${T(com.shoppinglist.model.enumerated.CategoryEnum).DRINK.displayName} +'; total: '+ *{productsPriceMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).DRINK)} +' lv'">
+                        Drinks</h3>
+                    <div class="mt-3 rounded badge-warning" th:each="p : *{productsMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).DRINK)}">
+                        <img class="mr-2" th:src="@{/img/drink.png}" alt="Food" width="50px" height="50px">
+                        <span th:text="'Name: ' + ${p.name} + ' Price: ' + ${p.price} + ' lv'">
+                            Name: {name} Price: {price} lv
+                        </span>
+                        <a class="ml-3 text-danger" th:href="@{/products/buy(id = ${p.id})}">Buy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3 mb-3">
+
+                <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto">
+                    <h3 class="mySticky bg-gray text-dark rounded" th:text="${T(com.shoppinglist.model.enumerated.CategoryEnum).HOUSEHOLD.displayName} +'; total: '+ *{productsPriceMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).HOUSEHOLD)} +' lv'">
+                        Households</h3>
+                    <div class="mt-3 rounded badge-success" th:each="p : *{productsMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).HOUSEHOLD)}">
+                        <img class="mr-2" th:src="@{/img/household.png}" alt="Food" width="50px" height="50px">
+                        <span th:text="'Name: ' + ${p.name} + '; Price: ' + ${p.price} + ' lv'">
+                            Name: {name} Price: {price} lv
+                        </span>
+                        <a class="ml-3 text-danger" th:href="@{/products/buy(id = ${p.id})}">Buy</a>
+                    </div>
+                </div>
+
+                <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto">
+                    <h3 class="mySticky bg-gray text-dark rounded" th:text="${T(com.shoppinglist.model.enumerated.CategoryEnum).OTHER.displayName} +'; total: '+ *{productsPriceMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).OTHER)} +' lv'">
+                        Other</h3>
+                    <div class="mt-3 rounded badge-secondary" th:each="p : *{productsMap.get(T(com.shoppinglist.model.enumerated.CategoryEnum).OTHER)}">
+                        <img class="mr-2" th:src="@{/img/other.png}" alt="Food" width="50px" height="50px">
+                        <span th:text="'Name: ' + ${p.name} + ' Price: ' + ${p.price} + ' lv'">
+                            Name: {name} Price: {price} lv
+                        </span>
+                        <a class="ml-3 text-danger" th:href="@{/products/buy(id = ${p.id})}">Buy</a>
+                    </div>
+                </div>
+
+            </div>
+            <a th:if="*{totalCost}" th:href="@{/products/buy-all}" class="btn btn-danger" th:text="'Buy all products for ' + *{totalCost} +' lv'">
+            Buy all products for {totalPriceOfProducts} lv
+        </a>
+            <a th:unless="*{totalCost}" class="btn btn-danger disabled">
+            No products in list
+        </a>
+        </div>
+    </main>
+
+    <footer th:replace="~{fragments/commons::footer}"></footer>
+
+</body>
+
+</html>
