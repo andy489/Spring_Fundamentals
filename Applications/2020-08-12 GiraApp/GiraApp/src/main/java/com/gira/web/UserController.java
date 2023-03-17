@@ -91,4 +91,5 @@ public class UserController extends BaseController {
 
         return super.redirect("/index");
     }
+
 }
