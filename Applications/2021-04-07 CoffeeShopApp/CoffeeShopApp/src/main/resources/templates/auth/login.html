@@ -5,73 +5,65 @@
 
 <body class="bg-secondary">
 
-<header th:replace="~{fragments/commons::header}"></header>
+    <header th:replace="~{fragments/commons::header}"></header>
 
-<main role="main" class="bg-secondary">
-    <div class="jumbotron">
+    <main role="main" class="bg-secondary">
+        <div class="jumbotron">
 
-        <div class="container text-light ">
-            <h1 class="display-3">
-                <strong class="bg-blur rounded border-left border-white pl-3 border-bottom">Login</strong></h1>
+            <div class="container text-light ">
+                <h1 class="display-3">
+                    <strong class="bg-blur rounded border-left border-white pl-3 border-bottom">Login</strong></h1>
 
-            <h3 class="mt-5 text-center">
-                <strong class="bg-blur rounded border-white pl-3 border-bottom">
+                <h3 class="mt-5 text-center">
+                    <strong class="bg-blur rounded border-white pl-3 border-bottom">
                     Enter valid username and password
                 </strong>
-            </h3>
-        </div>
+                </h3>
+            </div>
 
-        <div class="container bg-blur rounded p-5 mt-5 w-75 ">
-            <form th:action="@{/users/login}"
-                  th:method="post"
-                  th:object="${userLoginModel}"
-                  class="text-center text-light">
+            <div class="container bg-blur rounded p-5 mt-5 w-75 ">
+                <form th:action="@{/users/login}" th:method="post" th:object="${userLoginModel}" class="text-center text-light">
 
-                <h3 th:if="${#fields.hasErrors('*')}" class="mt-5 text-center">
-                    <strong class="bg-blur rounded text-danger">
+                    <h3 th:if="${#fields.hasErrors('*')}" class="mt-5 text-center">
+                        <strong class="bg-blur rounded text-danger">
                         Wrong username or password
                     </strong>
-                </h3>
+                    </h3>
 
-                <div class="form-group row">
-                    <label for="username" class="col-sm-2 col-form-label">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username"
-                               th:field="*{username}"
-                               th:errorclass="'is-invalid bg-danger'"
-                               aria-describedby="usernameHelpInline" placeholder="Username">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" th:field="*{username}" th:errorclass="'is-invalid bg-danger'" aria-describedby="usernameHelpInline" placeholder="Username">
 
-                        <div id="usernameHelpInline" class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('username')}" th:text="${err}"></div>
+                            <div id="usernameHelpInline" class="invalid-feedback errors alert alert-danger">
+                                <div th:each="err : ${#fields.errors('username')}" th:text="${err}"></div>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password"
-                               th:field="*{password}"
-                               th:errorclass="'is-invalid bg-danger'"
-                               aria-describedby="passwordHelpInline" placeholder="Password">
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" th:field="*{password}" th:errorclass="'is-invalid bg-danger'" aria-describedby="passwordHelpInline" placeholder="Password">
 
-                        <div id="passwordHelpInline" class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
+                            <div id="passwordHelpInline" class="invalid-feedback errors alert alert-danger">
+                                <div th:each="err : ${#fields.errors('password')}" th:text="${err}"></div>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <button type="submit" class="btn btn-info w-50">Login</button>
+                    <button type="submit" class="btn btn-info w-50">Login</button>
 
-            </form>
-            <hr class="bg-light">
+                </form>
+                <hr class="bg-light">
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<footer th:replace="~{fragments/commons::footer}"></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 
 </body>
+
 </html>
