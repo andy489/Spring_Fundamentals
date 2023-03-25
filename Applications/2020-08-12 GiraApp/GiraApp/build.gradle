@@ -48,7 +48,7 @@ dependencies {
 
     runtimeOnly 'com.mysql:mysql-connector-j'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.security:spring-security-crypto:5.5.2'
+    implementation 'org.springframework.security:spring-security-crypto:6.0.2'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
@@ -57,6 +57,8 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
     compileOnly "org.springframework.boot:spring-boot-devtools"
+
+    implementation 'org.springframework.boot:spring-boot-devtools:3.0.5'
 }
 
 tasks.named('test') {

@@ -17,8 +17,11 @@ import java.util.Optional;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+
     private final MapStructMapper mapper;
+
     private final ClassificationService classificationService;
+
     private final UserService userService;
 
     @Autowired
@@ -79,4 +82,5 @@ public class TaskService {
             taskRepository.deleteById(taskId);
         }
     }
+
 }

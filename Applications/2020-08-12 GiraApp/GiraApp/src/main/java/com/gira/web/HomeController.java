@@ -10,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController extends BaseController {
+
     private final CurrentUser currentUser;
+
     private final TaskService taskService;
 
     @Autowired

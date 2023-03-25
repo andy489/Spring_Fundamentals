@@ -27,7 +27,7 @@ public class GiraApplication
 
 //    @Override
 //    public void run(String... args) throws Exception {
-//        String[] passwords = {"1234"};
+//        String[] passwords = {"1234", "1234", "1234", "1234"};
 //
 //        Arrays.stream(passwords).map(encoder::encode).forEach(System.out::println);
 //    }

@@ -18,6 +18,5 @@ public interface MapStructMapper {
     @Mapping(target = "assignedTo", ignore = true)
     @Mapping(target = "classification", ignore = true)
     TaskView toTaskView(TaskEntity taskEntity);
-
 }
 

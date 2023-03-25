@@ -2,7 +2,6 @@ package com.gira.web;
 
 import org.springframework.web.servlet.ModelAndView;
 
-
 public abstract class BaseController {
 
     private static final String REDIRECT = "redirect:";

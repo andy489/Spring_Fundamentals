@@ -17,8 +17,11 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+
     private final CurrentUser currentUser;
+
     private final MapStructMapper mapper;
+
     private final PasswordEncoder encoder;
 
     @Autowired
@@ -32,11 +35,6 @@ public class UserService {
         this.currentUser = currentUser;
         this.mapper = mapper;
         this.encoder = encoder;
-    }
-
-    public Optional<UserEntity> getById(Long id) {
-
-        return userRepository.findById(id);
     }
 
     public Optional<UserEntity> getByUsername(String username) {
