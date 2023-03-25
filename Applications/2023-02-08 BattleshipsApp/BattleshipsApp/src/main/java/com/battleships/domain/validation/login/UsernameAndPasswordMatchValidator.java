@@ -59,7 +59,7 @@ public class UsernameAndPasswordMatchValidator implements ConstraintValidator<Us
             valid = false;
         }
 
-        if(valid){
+        if (valid) {
             String encodedPassword = byUsername.get().getPassword();
             valid = encoder.matches(passwordFieldValue, encodedPassword);
         }

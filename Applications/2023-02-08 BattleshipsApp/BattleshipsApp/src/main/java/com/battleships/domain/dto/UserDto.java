@@ -16,9 +16,13 @@ import lombok.experimental.Accessors;
 public class UserDto {
 
     private Long id;
+
     private String userName;
+
     private String fullName;
+
     private String password;
+
     private String email;
 
 }

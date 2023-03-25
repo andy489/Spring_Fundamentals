@@ -16,8 +16,11 @@ import lombok.experimental.Accessors;
 public class ShipDto {
 
     private Long id;
+
     private String name;
+
     private Integer health;
+
     private Integer power;
 
 }
