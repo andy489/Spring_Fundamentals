@@ -1,72 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="~{fragments/commons::head}"></head>
 
 <body>
 
-<header th:replace="~{fragments/commons::nav}"></header>
+    <header th:replace="~{fragments/commons::nav}"></header>
 
-<main>
-    <div class="container bg-blur rounded mt-1 mb-4">
-        <div class="row mt-1 mb-2">
-            <div class="col-6 mt-1 mb-1" style="height: 78vh; overflow: auto" th:object="${songsByGenre}">
-                <div th:each="kvp : *{songsEnumMap}">
-                    <h3 class="mySticky bg-gray text-dark  mb-0 mt-2" th:text="${kvp.key.displayName}">Pop</h3>
-                    <div class="bg-dark rounded " style="height: 20vh; overflow: auto">
-                        <div class="mt-1 rounded badge-info"
-                             th:classappend="'text-' + ${kvp.key.imgName}"
-                             th:each="s : ${kvp.value}">
-                            <img class="mr-1" th:src="@{'/img/' + ${kvp.key.imgName} + '.png'}" alt="" width="42px"
-                                 height="42px">
-                            <span th:text="${s.performer} + ' - ' + ${s.title} + ' (' + ${s.dur()} + ' min)'">
+    <main>
+        <div class="container bg-blur rounded mt-1 mb-4">
+            <div class="row mt-1 mb-2">
+                <div class="col-6 mt-1 mb-1" style="height: 78vh; overflow: auto" th:object="${songsByGenre}">
+                    <div th:each="kvp : *{songsEnumMap}">
+                        <h3 class="mySticky bg-gray text-dark  mb-0 mt-2" th:text="${kvp.key.displayName}">Pop</h3>
+                        <div class="bg-dark rounded " style="height: 20vh; overflow: auto">
+                            <div class="mt-1 rounded badge-info" th:classappend="'text-' + ${kvp.key.imgName}" th:each="s : ${kvp.value}">
+                                <img class="mr-1" th:src="@{'/img/' + ${kvp.key.imgName} + '.png'}" alt="" width="42px" height="42px">
+                                <span th:text="${s.performer} + ' - ' + ${s.title} + ' (' + ${s.dur()} + ' min)'">
                                 {performer} - {title} ({duration} min)
                             </span>
-                            <a class="ml-3 btn-success rounded p-1"
-                               th:href="@{/songs/add-song-to-playlist/{id}(id = ${s.id})}">Add</a>
+                                <a class="ml-3 btn-success rounded p-1" th:href="@{/songs/add-song-to-playlist/{id}(id = ${s.id})}">Add</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-6 mt-1 mb-1">
-                <h3 class="mySticky bg-gray text-dark mb-0 mt-2">My Playlist</h3>
+                <div class="col-6 mt-1 mb-1">
+                    <h3 class="mySticky bg-gray text-dark mb-0 mt-2">My Playlist</h3>
 
-                <h6 class="mySticky bg-gray text-dark mb-0 mt-0"
-                    th:text="${myPlaylist.totalDur()} +' min total'">
-                    {totalDurationOfPlaylist} min. total
-                </h6>
+                    <h6 class="mySticky bg-gray text-dark mb-0 mt-0" th:text="${myPlaylist.totalDur()} +' min total'">
+                        {totalDurationOfPlaylist} min. total
+                    </h6>
 
-                <div class="bg-dark rounded m-auto" style="height: 70vh; overflow: auto">
-                    <table class="table table-striped table-dark">
-                        <tr th:each="s : ${myPlaylist.mySongs}">
-                            <th scope="row">
-                                <img class="mr-2" alt="Playlist" width="30px" height="30px" th:src="@{/img/plist.png}">
-                            </th>
-                            <td>
-                                <span th:text="${s.performer} + ' - ' + ${s.title} + ' (' + ${s.dur()} + ' min)'">
+                    <div class="bg-dark rounded m-auto" style="height: 70vh; overflow: auto">
+                        <table class="table table-striped table-dark">
+                            <tr th:each="s : ${myPlaylist.mySongs}">
+                                <th scope="row">
+                                    <img class="mr-2" alt="Playlist" width="30px" height="30px" th:src="@{/img/plist.png}">
+                                </th>
+                                <td>
+                                    <span th:text="${s.performer} + ' - ' + ${s.title} + ' (' + ${s.dur()} + ' min)'">
                                     {performer} - {title} ({duration} min)
                                 </span>
-                            </td>
-                            <td>
-                                <a class="ml-3 text-danger"
-                                   th:href="@{/songs/remove-song-from-playlist/{id}(id = ${s.id})}">
+                                </td>
+                                <td>
+                                    <a class="ml-3 text-danger" th:href="@{/songs/remove-song-from-playlist/{id}(id = ${s.id})}">
                                     Remove
                                 </a>
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <a th:href="@{/users/remove-all-songs-from-playlist}" class="mt-1 mb-0 btn btn-danger">Remove all</a>
+
                 </div>
-
-                <a th:href="@{/users/remove-all-songs-from-playlist}" class="mt-1 mb-0 btn btn-danger">Remove all</a>
-
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<footer th:replace="~{fragments/commons::footer}"></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 
 </body>
+
 </html>
