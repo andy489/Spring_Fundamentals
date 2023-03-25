@@ -15,8 +15,11 @@ import java.util.NoSuchElementException;
 public class PostService {
 
     private final PostRepository postRepository;
+
     private final MapStructMapper mapper;
+
     private final UserService userService;
+
     private final MoodService moodService;
 
     @Autowired

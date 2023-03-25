@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -37,15 +36,6 @@ public class UserService {
 
     public UserEntity getCurrentUser() {
         return userRepository.findById(currentUser.getId()).orElseThrow(NoSuchElementException::new);
-    }
-
-    public Optional<UserEntity> getById(Long id) {
-
-        return userRepository.findById(id);
-    }
-
-    public UserEntity getByIdExisting(Long id) {
-        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
     public Optional<UserEntity> getByUsername(String username) {
