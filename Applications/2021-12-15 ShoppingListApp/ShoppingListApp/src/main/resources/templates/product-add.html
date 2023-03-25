@@ -5,75 +5,62 @@
 
 <body>
 
-<header th:replace="~{fragments/commons::header}"></header>
+    <header th:replace="~{fragments/commons::header}"></header>
 
-<main>
-    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add product</span></h1>
-    <hr class="hr-3 w-25 bg-white"/>
-    <form class="mx-auto w-25 bg-blur rounded"
-          th:method="post"
-          th:action="@{/products/add}"
-          th:object="${productAddModel}">
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add product</span></h1>
+        <hr class="hr-3 w-25 bg-white" />
+        <form class="mx-auto w-25 bg-blur rounded" th:method="post" th:action="@{/products/add}" th:object="${productAddModel}">
 
-        <div class="form-group">
-            <div class="label-holder textCol d-flex justify-content-center">
-                <label for="name" class="h4 mb-2 text-white">Name</label>
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <label for="name" class="h4 mb-2 text-white">Name</label>
+                </div>
+                <input type="text" class="form-control" id="name" th:field="*{name}" th:errorclass="'is-invalid bg-danger'" />
+
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('name')}" th:text="${err}"></div>
+                </div>
             </div>
-            <input type="text" class="form-control" id="name"
-                   th:field="*{name}"
-                   th:errorclass="'is-invalid bg-danger'"/>
 
-            <div class="invalid-feedback errors alert alert-danger">
-                <div th:each="err : ${#fields.errors('name')}" th:text="${err}"></div>
-            </div>
-        </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="description" class="h4 mb-2">Description</label>
+                </div>
+                <textarea type="text" class="form-control" id="description" th:field="*{description}" th:errorclass="'is-invalid bg-danger'"></textarea>
 
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="description" class="h4 mb-2">Description</label>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('description')}" th:text="${err}"></div>
+                </div>
             </div>
-            <textarea type="text" class="form-control" id="description"
-                      th:field="*{description}"
-                      th:errorclass="'is-invalid bg-danger'"></textarea>
 
-            <div class="invalid-feedback errors alert alert-danger">
-                <div th:each="err : ${#fields.errors('description')}" th:text="${err}"></div>
-            </div>
-        </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="neededBefore" class="h4 mb-2">Before</label>
+                </div>
+                <input type="datetime-local" class="form-control" id="neededBefore" th:field="*{neededBefore}" th:errorclass="'is-invalid bg-danger'" />
 
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="neededBefore" class="h4 mb-2">Before</label>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('neededBefore')}" th:text="${err}"></div>
+                </div>
             </div>
-            <input type="datetime-local" class="form-control" id="neededBefore"
-                   th:field="*{neededBefore}"
-                   th:errorclass="'is-invalid bg-danger'"/>
 
-            <div class="invalid-feedback errors alert alert-danger">
-                <div th:each="err : ${#fields.errors('neededBefore')}" th:text="${err}"></div>
-            </div>
-        </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <label for="price" class="h4 mb-2">Price</label>
+                </div>
+                <input type="number" step="0.01" class="form-control" id="price" th:field="*{price}" th:errorclass="'is-invalid bg-danger'" />
 
-        <div class="form-group">
-            <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="price" class="h4 mb-2">Price</label>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('price')}" th:text="${err}"></div>
+                </div>
             </div>
-            <input type="number" step="0.01" class="form-control" id="price"
-                   th:field="*{price}"
-                   th:errorclass="'is-invalid bg-danger'"/>
 
-            <div class="invalid-feedback errors alert alert-danger">
-                <div th:each="err : ${#fields.errors('price')}" th:text="${err}"></div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="text-white label-holder d-flex justify-content-center">
-                <label for="category" class="h4 mb-2">Category</label>
-            </div>
-            <select class="browser-default custom-select" id="category"
-                    th:field="*{category}"
-                    th:errorclass="'is-invalid bg-danger'">
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <label for="category" class="h4 mb-2">Category</label>
+                </div>
+                <select class="browser-default custom-select" id="category" th:field="*{category}" th:errorclass="'is-invalid bg-danger'">
 
                 <option value="">- Select category -</option>
                 <option th:each="c : ${T(com.shoppinglist.model.enumerated.CategoryEnum).values()}"
@@ -83,18 +70,19 @@
                 </option>
             </select>
 
-            <div class="invalid-feedback errors alert alert-danger">
-                <div th:each="err : ${#fields.errors('category')}" th:text="${err}"></div>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div th:each="err : ${#fields.errors('category')}" th:text="${err}"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="button-holder d-flex justify-content-center">
-            <button type="submit" class="btn btn-warning  mb-3" value="Register">Add product</button>
-        </div>
-    </form>
-</main>
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-warning  mb-3" value="Register">Add product</button>
+            </div>
+        </form>
+    </main>
 
-<footer th:replace="~{fragments/commons::footer}"></footer>
+    <footer th:replace="~{fragments/commons::footer}"></footer>
 
 </body>
+
 </html>
