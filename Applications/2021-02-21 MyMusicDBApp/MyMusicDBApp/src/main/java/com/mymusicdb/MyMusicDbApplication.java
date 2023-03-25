@@ -30,4 +30,5 @@ public class MyMusicDbApplication
 //        String[] passwords = {"1234"};
 //        Arrays.stream(passwords).map(encoder::encode).forEach(System.out::println);
 //    }
+
 }

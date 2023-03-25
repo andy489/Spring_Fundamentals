@@ -14,8 +14,11 @@ import java.util.Comparator;
 @Service
 public class AlbumService {
     private final AlbumRepository albumRepository;
+
     private final MapStructMapper mapper;
+
     private final UserService userService;
+
     private final ArtistService artistService;
 
     @Autowired

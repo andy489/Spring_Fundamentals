@@ -16,4 +16,5 @@ public enum GenreEnum {
         this.displayName = displayName;
         this.imgName = imgName;
     }
+
 }

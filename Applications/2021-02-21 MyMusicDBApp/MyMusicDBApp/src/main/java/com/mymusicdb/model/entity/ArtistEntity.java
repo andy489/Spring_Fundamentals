@@ -30,4 +30,5 @@ public class ArtistEntity extends BaseEntity {
         this.band = band;
         this.careerInformation = careerInformation;
     }
+
 }

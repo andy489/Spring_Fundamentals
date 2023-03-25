@@ -6,7 +6,6 @@ import com.mymusicdb.model.entity.AlbumEntity;
 import com.mymusicdb.model.entity.UserEntity;
 import com.mymusicdb.model.view.AlbumView;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface MapStructMapper {
@@ -24,4 +23,5 @@ public interface MapStructMapper {
 
         return albumView;
     }
+
 }
