@@ -15,10 +15,10 @@ import java.util.List;
 @NoArgsConstructor
 public class OfferModel {
 
-    List<OfferDto> myOffers;
+    private List<OfferDto> myOffers;
 
-    List<OfferDto> boughtOffers;
+    private List<OfferDto> boughtOffers;
 
-    List<OfferDto> otherOffers;
+    private List<OfferDto> otherOffers;
 
 }

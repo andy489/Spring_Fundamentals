@@ -21,7 +21,7 @@
     <description>MyMusicDB</description>
 
     <properties>
-        <java.version>19</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
-            <version>5.5.8</version>
+            <version>6.0.2</version>
         </dependency>
 
         <dependency>

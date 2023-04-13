@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,12 +15,13 @@ import lombok.experimental.Accessors;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity(name = "albums")
+@Entity(name = "uniqueAlbumEntity")
+@Table(name = "albums")
 @Getter
 @Setter
 @Accessors(chain = true)
 @NoArgsConstructor
-public class AlbumEntity extends BaseEntity {
+public class AlbumEntity extends GenericEntity {
 
     @Column(nullable = false)
     private String name;

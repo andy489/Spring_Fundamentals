@@ -5,126 +5,138 @@
 
 <body>
 
-    <header th:replace="~{fragments/commons::header}"></header>
+<header th:replace="~{fragments/commons::header}"></header>
 
-    <main class="p-5 bg-blur text-center my-main">
-        <h1 class="text-light border-bottom">Add Album</h1>
-        <div class="d-flex justify-content-center">
-            <form class="text-light" th:action="@{/albums/add}" th:method="post" th:object="${albumAddModel}">
+<main class="p-5 bg-blur text-center my-main">
+    <h1 class="text-light border-bottom">Add Album</h1>
+    <div class="d-flex justify-content-center">
+        <form class="text-light" th:action="@{/albums/add}" th:method="post" th:object="${albumAddModel}">
 
-                <div class="form-row m-5">
-                    <div class="col">
-                        <label for="name">Album name</label>
-                        <input id="name" type="text" class="form-control" placeholder="Album name" th:field="*{name}" th:errorclass="'is-invalid bg-danger'">
+            <div class="form-row m-5">
+                <div class="col">
+                    <label for="name">Album name</label>
+                    <input id="name" type="text" class="form-control" placeholder="Album name" th:field="*{name}"
+                           th:errorclass="'is-invalid bg-danger'">
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('name')}" th:text="${err}">Name error msg</div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <label for="imgUrl">Image Url</label>
-                        <input id="imgUrl" type="text" class="form-control" placeholder="Image Url" th:field="*{imgUrl}" th:errorclass="'is-invalid bg-danger'">
-
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('imgUrl')}" th:text="${err}">Image Url error msg</div>
-                        </div>
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('name')}" th:text="${err}">Name error msg</div>
                     </div>
                 </div>
 
-                <div class="form-row m-5">
-                    <div class="col">
-                        <label for="price">Price</label>
-                        <input id="price" type="number" class="form-control" placeholder="Price" th:field="*{price}" th:errorclass="'is-invalid bg-danger'">
+                <div class="col">
+                    <label for="imgUrl">Image Url</label>
+                    <input id="imgUrl" type="text" class="form-control" placeholder="Image Url" th:field="*{imgUrl}"
+                           th:errorclass="'is-invalid bg-danger'">
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('price')}" th:text="${err}">Price error msg</div>
-                        </div>
-
-                    </div>
-
-                    <div class="col">
-                        <label for="copies">Copies</label>
-                        <input id="copies" type="number" class="form-control" placeholder="Copies" th:field="*{copies}" th:errorclass="'is-invalid bg-danger'">
-
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('copies')}" th:text="${err}">Copies error msg</div>
-                        </div>
-
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('imgUrl')}" th:text="${err}">Image Url error msg</div>
                     </div>
                 </div>
-                <div class="form-row m-5">
-                    <div class="col">
-                        <label for="releaseDate">Release date</label>
-                        <input id="releaseDate" type="date" class="form-control" placeholder="Release date" th:field="*{releaseDate}" th:errorclass="'is-invalid bg-danger'">
+            </div>
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('releaseDate')}" th:text="${err}">Release date error msg</div>
-                        </div>
+            <div class="form-row m-5">
+                <div class="col">
+                    <label for="price">Price</label>
+                    <input id="price" type="number" class="form-control" placeholder="Price" th:field="*{price}"
+                           th:errorclass="'is-invalid bg-danger'">
 
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('price')}" th:text="${err}">Price error msg</div>
                     </div>
 
-                    <div class="col">
-                        <label for="producer">Producer</label>
-                        <input name="producer" id="producer" type="text" class="form-control" placeholder="Producer">
-                    </div>
                 </div>
 
-                <div class="form-row m-5">
-                    <div class="col">
-                        <label for="artist">Artist</label>
-                        <select id="artist" class="custom-select" th:field="*{band}" th:errorclass="'is-invalid bg-danger'">
+                <div class="col">
+                    <label for="copies">Copies</label>
+                    <input id="copies" type="number" class="form-control" placeholder="Copies" th:field="*{copies}"
+                           th:errorclass="'is-invalid bg-danger'">
+
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('copies')}" th:text="${err}">Copies error msg</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-row m-5">
+                <div class="col">
+                    <label for="releaseDate">Release date</label>
+                    <input id="releaseDate" type="date" class="form-control" placeholder="Release date"
+                           th:field="*{releaseDate}" th:errorclass="'is-invalid bg-danger'">
+
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('releaseDate')}" th:text="${err}">Release date error msg
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <label for="producer">Producer</label>
+                    <input name="producer" id="producer" type="text" class="form-control" placeholder="Producer">
+                </div>
+            </div>
+
+            <div class="form-row m-5">
+                <div class="col">
+                    <label for="artist">Artist</label>
+                    <select id="artist" class="custom-select" th:field="*{band}" th:errorclass="'is-invalid bg-danger'">
                         <option value="">- Select Artist -</option>
                         <option th:each="b : ${T(com.mymusicdb.model.enumerated.BandEnum).values()}"
                                 th:value="${b}"
                                 th:text="${b}"
-                                th:selected="${b} == *{band}">Band</option>
+                                th:selected="${b} == *{band}">Band
+                        </option>
                     </select>
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('band')}" th:text="${err}">Band error msg</div>
-                        </div>
-
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('band')}" th:text="${err}">Band error msg</div>
                     </div>
-                    <div class="col">
-                        <label for="genre">Genre</label>
-                        <select name="genre" id="genre" class="custom-select" th:field="*{genre}" th:errorclass="'is-invalid bg-danger'">
+
+                </div>
+                <div class="col">
+                    <label for="genre">Genre</label>
+                    <select name="genre" id="genre" class="custom-select" th:field="*{genre}"
+                            th:errorclass="'is-invalid bg-danger'">
                         <option value="">- Select Genre -</option>
                         <option th:each="g : ${T(com.mymusicdb.model.enumerated.GenreEnum).values()}"
                                 th:value="${g}"
                                 th:text="${g}"
-                                th:selected="${g} == *{genre}">Genre</option>
+                                th:selected="${g} == *{genre}">Genre
+                        </option>
                     </select>
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('genre')}" th:text="${err}">Genre error msg</div>
-                        </div>
-
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('genre')}" th:text="${err}">Genre error msg</div>
                     </div>
+
                 </div>
+            </div>
 
-                <div class="form-row m-5">
-                    <div class="col">
-                        <label for="description">Description</label>
+            <div class="form-row m-5">
+                <div class="col">
+                    <label for="description">Description</label>
 
-                        <textarea name="description" id="description" type="text" class="form-control" placeholder="Description" th:field="*{description}" th:errorclass="'is-invalid bg-danger'"></textarea>
+                    <textarea name="description" id="description" type="text" class="form-control"
+                              placeholder="Description" th:field="*{description}"
+                              th:errorclass="'is-invalid bg-danger'"></textarea>
 
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('description')}" th:text="${err}">Description error msg</div>
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('description')}" th:text="${err}">Description error msg
                         </div>
-
                     </div>
+
                 </div>
+            </div>
 
-                <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-primary btn-block w-50" type="submit">Add New Album</button>
-                </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn btn-primary btn-block w-50" type="submit">Add New Album</button>
+            </div>
 
-            </form>
-        </div>
-    </main>
+        </form>
+    </div>
+</main>
 
-    <head th:replace="~{fragments/commons::footer}"></head>
+<head th:replace="~{fragments/commons::footer}"></head>
 
 </body>
 

@@ -12,18 +12,15 @@ import java.util.Arrays;
 public class MyMusicDbApplication
 //        implements CommandLineRunner
 {
-
 //    private final PasswordEncoder encoder;
 //
 //    @Autowired
 //    public MyMusicDbApplication(PasswordEncoder encoder) {
 //        this.encoder = encoder;
 //    }
-
     public static void main(String[] args) {
         SpringApplication.run(MyMusicDbApplication.class, args);
     }
-
 
 //    @Override
 //    public void run(String... args) throws Exception {

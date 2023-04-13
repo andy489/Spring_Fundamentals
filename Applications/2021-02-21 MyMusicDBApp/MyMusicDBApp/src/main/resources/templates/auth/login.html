@@ -5,59 +5,62 @@
 
 <body>
 
-    <head th:replace="~{fragments/commons::header}"></head>
+<head th:replace="~{fragments/commons::header}"></head>
 
-    <main class="p-5 align-content-center bg-blur my-register-div my-main">
-        <h1 class="text-light border-bottom mb-5">Login</h1>
-        <div class="d-flex justify-content-center">
+<main class="p-5 align-content-center bg-blur my-register-div my-main">
+    <h1 class="text-light border-bottom mb-5">Login</h1>
+    <div class="d-flex justify-content-center">
 
-            <div class="row g-3 align-items-center">
-                <img alt="Metallica image" th:src="@{/img/metallica.jpg}" class="w-50 rounded">
-            </div>
-
-            <div class="row g-3 align-items-center">
-                <form th:action="@{/users/login}" th:method="post" th:object="${userLoginModel}">
-
-                    <div class="col-auto" th:if="${#fields.hasErrors('*')}">
-                        <h5 class="text-center text-light form-text bg-danger rounded p-2">Enter valid username and password</h5>
-                    </div>
-
-                    <div>
-                        <div class="col-auto">
-                            <label for="inputUsername" class="col-form-label text-light">Username</label>
-                        </div>
-
-                        <input type="text" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline" th:field="*{username}" th:errorclass="'is-invalid bg-danger'">
-
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('username')}" th:text="${err}">Username error msg</div>
-                        </div>
-
-                    </div>
-
-                    <div>
-                        <div class="col-auto">
-                            <label for="inputPassword" class="col-form-label text-light">Password</label>
-                        </div>
-                        <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline" th:field="*{password}" th:errorclass="'is-invalid bg-danger'">
-
-                        <div class="invalid-feedback errors alert alert-danger">
-                            <div th:each="err : ${#fields.errors('password')}" th:text="${err}">Username error msg</div>
-                        </div>
-
-                    </div>
-
-                    <div class="d-flex justify-content-center mt-2">
-                        <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
-                    </div>
-
-                </form>
-            </div>
-
+        <div class="row g-3 align-items-center">
+            <img alt="Metallica image" th:src="@{/images/metallica.jpg}" class="w-50 rounded">
         </div>
-    </main>
 
-    <head th:replace="~{fragments/commons::footer}"></head>
+        <div class="row g-3 align-items-center">
+            <form th:action="@{/users/login}" th:method="post" th:object="${userLoginModel}">
+
+                <div class="col-auto" th:if="${#fields.hasErrors('*')}">
+                    <h5 class="text-center text-light form-text bg-danger rounded p-2">Enter valid username and
+                        password</h5>
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label for="inputUsername" class="col-form-label text-light">Username</label>
+                    </div>
+
+                    <input type="text" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline"
+                           th:field="*{username}" th:errorclass="'is-invalid bg-danger'">
+
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('username')}" th:text="${err}">Username error msg</div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label for="inputPassword" class="col-form-label text-light">Password</label>
+                    </div>
+                    <input type="password" id="inputPassword" class="form-control" aria-describedby="passwordHelpInline"
+                           th:field="*{password}" th:errorclass="'is-invalid bg-danger'">
+
+                    <div class="invalid-feedback errors alert alert-danger">
+                        <div th:each="err : ${#fields.errors('password')}" th:text="${err}">Username error msg</div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</main>
+
+<head th:replace="~{fragments/commons::footer}"></head>
 
 </body>
 

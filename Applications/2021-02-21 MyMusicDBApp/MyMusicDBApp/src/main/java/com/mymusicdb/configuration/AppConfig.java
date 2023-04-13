@@ -10,7 +10,20 @@ public class AppConfig {
 
     @Bean
     public PasswordEncoder encode() {
-        return new Pbkdf2PasswordEncoder();
+
+        final String SALT = "pepper";
+
+        final int ITERATIONS = (int) 2e5;
+
+        final int SALT_LENGTH = 10;
+
+        return new Pbkdf2PasswordEncoder(
+                SALT,
+                SALT_LENGTH,
+                ITERATIONS,
+                Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256
+        );
+
     }
 
 }

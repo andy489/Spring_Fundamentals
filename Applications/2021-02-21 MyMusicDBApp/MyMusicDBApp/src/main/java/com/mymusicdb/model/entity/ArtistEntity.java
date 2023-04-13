@@ -5,17 +5,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Entity(name = "artists")
+@Entity(name = "uniqueArtistEntity")
+@Table(name = "artists")
 @Getter
 @Setter
 @Accessors(chain = true)
 @NoArgsConstructor
-public class ArtistEntity extends BaseEntity {
+public class ArtistEntity extends GenericEntity {
 
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
