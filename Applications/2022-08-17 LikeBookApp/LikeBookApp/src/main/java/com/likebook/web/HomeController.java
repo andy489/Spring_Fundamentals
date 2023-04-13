@@ -2,6 +2,7 @@ package com.likebook.web;
 
 import com.likebook.service.PostService;
 import com.likebook.session.CurrentUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ public class HomeController extends BaseController{
     private final CurrentUser currentUser;
     private final PostService postService;
 
+    @Autowired
     public HomeController(CurrentUser currentUser, PostService postService) {
         this.currentUser = currentUser;
         this.postService = postService;

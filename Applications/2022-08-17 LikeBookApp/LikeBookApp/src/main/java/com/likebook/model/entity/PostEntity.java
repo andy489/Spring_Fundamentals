@@ -6,7 +6,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -14,12 +14,12 @@ import lombok.experimental.Accessors;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "posts")
+@Entity
+@Table(name = "posts")
 @Getter
 @Setter
 @Accessors(chain = true)
-@AllArgsConstructor(staticName = "of")
-public class PostEntity extends BaseEntity {
+public class PostEntity extends GenericEntity {
 
     @Column(nullable = false)
     private String content;

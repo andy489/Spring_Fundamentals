@@ -12,6 +12,8 @@ public interface MapStructMapper {
 
     UserEntity toUserEntity(UserRegisterDto userRegisterDto);
 
+    @Mapping(target = "assignedTo", ignore = true)
+    @Mapping(target = "priority", ignore = true)
     TaskEntity toTaskEntity(TaskAddDto taskAddDto);
 
     @Mapping(target = "assignedTo", ignore = true)

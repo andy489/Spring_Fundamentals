@@ -16,15 +16,17 @@ public interface MapStructMapper {
 
     UserEntity toUserEntity(UserRegisterDto userRegisterDto);
 
-    @Mapping(target="mood", ignore = true)
+    @Mapping(target = "mood", ignore = true)
+    @Mapping(target = "likes", ignore = true)
     PostEntity toPostEntity(PostAddDto postAddDto);
 
-    @Mapping(target="mood", ignore = true)
+    @Mapping(target = "userLikes", ignore = true)
+    @Mapping(target = "mood", ignore = true)
     PostView toPostView(PostEntity postEntity);
 
     UserView toUserView(UserEntity userEntity);
 
-    default PostView toPostViewFullMap(PostEntity postEntity){
+    default PostView toPostViewFullMap(PostEntity postEntity) {
         PostView postView = this.toPostView(postEntity);
 
         postView.setMood(postEntity.getMood().getName());
