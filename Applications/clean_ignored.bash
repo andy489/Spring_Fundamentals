@@ -36,6 +36,10 @@ for d in ./* ; do
 				case ${ddd} in .iml)
 					rm "${ddd}"
 				esac
+
+				case ${ddd} in .gitignore)
+					rm "${ddd}"
+				esac
 			done 
 		esac
 	done
