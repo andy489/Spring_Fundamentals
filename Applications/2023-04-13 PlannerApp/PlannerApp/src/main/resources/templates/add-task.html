@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/commons::head}"></head>
+
+<body>
+
+<header th:replace="~{fragments/commons::header}"></header>
+
+<main>
+    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add task</span></h1>
+    <hr class="hr-3 w-25 bg-white"/>
+
+    <form class="mx-auto w-25 bg-blur rounded"
+          th:method="post"
+          th:action="@{/tasks/add}"
+          th:object="${taskAddModel}">
+
+        <div class="form-group">
+
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="description" class="h4 mb-2">Description</label>
+            </div>
+
+            <textarea type="text" class="form-control" id="description"
+                      th:field="*{description}"
+                      th:errorclass="'is-invalid bg-danger'"></textarea>
+
+            <div class="invalid-feedback errors alert alert-danger">
+                <div th:each="err : ${#fields.errors('description')}" th:text="${err}"></div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="label-holder text-white textCol d-flex justify-content-center">
+                <label for="dueDate" class="h4 mb-2">Set due date</label>
+            </div>
+
+            <input type="date" class="form-control" id="dueDate" th:field="*{dueDate}" th:errorclass="'is-invalid bg-danger'"/>
+
+            <div class="invalid-feedback errors alert alert-danger">
+                <div th:each="err : ${#fields.errors('dueDate')}" th:text="${err}"></div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="text-white label-holder d-flex justify-content-center">
+                <label for="priority" class="h4 mb-2">Priority</label>
+            </div>
+            <select class="browser-default custom-select" id="priority"
+                    th:field="*{priority}"
+                    th:errorclass="'is-invalid bg-danger'">
+
+                <option value="">- Select Priority -</option>
+                <option th:each="p : ${T(com.planner.model.enumerated.PriorityEnum).values()}"
+                        th:text="${p}"
+                        th:value="${p}"
+                        th:selected="${p} == *{priority}">{PRIORITY}</option>
+
+            </select>
+
+            <div class="invalid-feedback errors alert alert-danger">
+                <div th:each="err : ${#fields.errors('priority')}" th:text="${err}"></div>
+            </div>
+
+        </div>
+
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn btn-warning  mb-3" value="Register">Add task</button>
+        </div>
+
+    </form>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+</body>
+</html>
