@@ -10,14 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SessionController {
-
     private static final String LANG_SESSION_ATTRIBUTE = "lang";
     private static final String DEFAULT_LANG = "en";
 
     @GetMapping("/session")
-    public String session(HttpSession httpSession,
-                          Model model
-    ) {
+    public String session(HttpSession httpSession, Model model) {
 
         var sessionLang = httpSession.getAttribute(LANG_SESSION_ATTRIBUTE);
 
