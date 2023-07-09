@@ -1,6 +1,6 @@
 package com.battleships.domain.entity;
 
-import com.battleships.domain.entity.enums.ShipType;
+import com.battleships.domain.enumerated.ShipType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

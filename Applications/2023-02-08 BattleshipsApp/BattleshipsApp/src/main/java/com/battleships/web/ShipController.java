@@ -2,6 +2,7 @@ package com.battleships.web;
 
 import com.battleships.domain.dto.ShipAddDto;
 import com.battleships.service.ShipService;
+import com.battleships.session.CurrentUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,13 @@ public class ShipController {
 
     private final ShipService shipService;
 
+    private final CurrentUser currentUser;
+
     @Autowired
-    public ShipController(ShipService shipService) {
+    public ShipController(ShipService shipService, CurrentUser currentUser) {
+
         this.shipService = shipService;
+        this.currentUser = currentUser;
     }
 
     @ModelAttribute(name = "shipAddModel")
@@ -39,19 +44,21 @@ public class ShipController {
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes
     ) {
+        if (!currentUser.isLoggedIn()) {
+            return "redirect:/auth/login";
+        }
+
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("shipAddModel", shipAddDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.shipAddModel", bindingResult);
 
-            return "redirect:add";
+            return "redirect:/ships/add";
         }
 
-        if (shipService.addShip(shipAddDto)) {
-            return "redirect:/home";
-        }
+        shipService.addShip(shipAddDto);
 
-        return "redirect:add";
+        return "redirect:/home";
     }
 
 }

@@ -2,7 +2,7 @@ package com.battleships.service;
 
 import com.battleships.domain.entity.CategoryEntity;
 
-import com.battleships.domain.entity.enums.ShipType;
+import com.battleships.domain.enumerated.ShipType;
 import com.battleships.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

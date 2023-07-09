@@ -42,14 +42,14 @@ public class AuthService {
     }
 
     public void login(UserLoginDto userLoginDto) {
-        UserEntity existingUser = userRepository.findByUserName(userLoginDto.getUserName()).orElseThrow(NoSuchFieldError::new);
+        UserEntity existingUser = userRepository.findByUsername(userLoginDto.getUsername()).orElseThrow(NoSuchFieldError::new);
         login(existingUser);
     }
 
     private void login(UserEntity userEntity) {
         currentUser.setLoggedIn(true)
                 .setId(userEntity.getId())
-                .setUserName(userEntity.getUserName())
+                .setUsername(userEntity.getUsername())
                 .setEmail(userEntity.getEmail());
     }
 
@@ -58,7 +58,7 @@ public class AuthService {
     }
 
     public Optional<UserEntity> getByUsername(String uniqueFieldValue) {
-        return userRepository.findByUserName(uniqueFieldValue);
+        return userRepository.findByUsername(uniqueFieldValue);
     }
 
     public Optional<UserEntity> getByEmail(String email) {

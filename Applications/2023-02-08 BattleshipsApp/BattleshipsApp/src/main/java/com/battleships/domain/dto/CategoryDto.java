@@ -1,6 +1,6 @@
 package com.battleships.domain.dto;
 
-import com.battleships.domain.entity.enums.ShipType;
+import com.battleships.domain.enumerated.ShipType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -50,7 +50,7 @@ public class AuthController {
             redirectAttributes.addFlashAttribute("userRegisterModel", userRegisterDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterModel", bindingResult);
 
-            return "redirect:register";
+            return "redirect:/auth/register";
         }
 
         authService.registerAndLogin(userRegisterDto);
@@ -74,7 +74,7 @@ public class AuthController {
             redirectAttributes.addFlashAttribute("userLoginModel", userLoginDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userLoginModel", bindingResult);
 
-            return "redirect:login";
+            return "redirect:/auth/login";
         }
 
         authService.login(userLoginDto);

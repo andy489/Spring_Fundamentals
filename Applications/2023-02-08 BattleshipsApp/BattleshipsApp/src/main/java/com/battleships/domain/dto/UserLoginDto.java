@@ -15,15 +15,15 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
 @UsernameAndPasswordMatch(
-        uniqueField = "userName",
+        uniqueField = "username",
         passwordField = "password",
         message = "invalid user and password combination"
 )
 public class UserLoginDto {
 
     @NotBlank
-    @Size(min = 5, max = 20, message = "length must be between 5 and 20 characters")
-    private String userName;
+    @Size(min = 4, max = 20, message = "length must be between 4 and 20 characters")
+    private String username;
 
     @NotBlank
     @Size(min = 3, message = "length must be more than 3 characters long")
@@ -32,7 +32,7 @@ public class UserLoginDto {
     @Override
     public String toString() {
         return "UserLoginDto{" +
-                "userName='" + userName + '\'' +
+                "userName='" + username + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : null) + '\'' +
                 '}';
     }

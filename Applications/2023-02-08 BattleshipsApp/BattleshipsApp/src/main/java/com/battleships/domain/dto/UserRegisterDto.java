@@ -2,6 +2,7 @@ package com.battleships.domain.dto;
 
 import com.battleships.domain.validation.register.FieldMatch;
 import com.battleships.domain.validation.register.UniqueEmail;
+import com.battleships.domain.validation.register.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,8 +25,9 @@ import lombok.experimental.Accessors;
 public class UserRegisterDto {
 
     @NotBlank
-    @Size(min = 3, max = 10, message = "length must be between 5 and 20 characters")
-    private String userName;
+    @Size(min = 4, max = 10, message = "length must be between 4 and 20 characters")
+    @UniqueUsername(message = "choose another username")
+    private String username;
 
     @NotBlank
     @Size(min = 5, max = 20, message = "length must be between 5 and 20 characters")
@@ -45,7 +47,7 @@ public class UserRegisterDto {
     @Override
     public String toString() {
         return "UserRegisterDto{" +
-                "userName='" + userName + '\'' +
+                "userName='" + username + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : null) + '\'' +

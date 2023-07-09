@@ -33,10 +33,10 @@
                             <div class="form-group row">
                                 <label for="username" class="col-sm-3 col-form-label">Username</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="username" th:field="*{userName}" th:errorclass="'is-invalid bg-danger'" aria-describedby="usernameHelpInline" placeholder="Username">
+                                    <input type="text" class="form-control" id="username" th:field="*{username}" th:errorclass="'is-invalid bg-danger'" aria-describedby="usernameHelpInline" placeholder="Username">
 
                                     <div class="invalid-feedback errors alert alert-danger">
-                                        <div th:each="err : ${#fields.errors('userName')}" th:text="${err}"></div>
+                                        <div th:each="err : ${#fields.errors('username')}" th:text="${err}"></div>
                                     </div>
                                 </div>
                             </div>

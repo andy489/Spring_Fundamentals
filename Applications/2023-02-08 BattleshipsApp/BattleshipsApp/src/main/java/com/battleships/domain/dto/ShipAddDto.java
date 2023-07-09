@@ -1,6 +1,6 @@
 package com.battleships.domain.dto;
 
-import com.battleships.domain.entity.enums.ShipType;
+import com.battleships.domain.enumerated.ShipType;
 import com.battleships.domain.validation.ship.UniqueShipName;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

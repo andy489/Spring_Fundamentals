@@ -47,10 +47,7 @@ public class ShipService {
         return shipRepository.findByName(name);
     }
 
-    public Boolean addShip(ShipAddDto shipAddDto) {
-        if (!currentUser.isLoggedIn()) {
-            return false;
-        }
+    public void addShip(ShipAddDto shipAddDto) {
 
         ShipEntity newShip = mapper.toEntity(shipAddDto);
 
@@ -58,8 +55,6 @@ public class ShipService {
         newShip.setCategory(categoryService.getByShipType(shipAddDto.getShipType()));
 
         shipRepository.saveAndFlush(newShip);
-
-        return true;
     }
 
     public UserWithShipsDto getUserWithShips(Boolean logged) {

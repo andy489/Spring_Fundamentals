@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS `battleships`;
+# CREATE SCHEMA IF NOT EXISTS `battleships`;
 USE `battleships`;
 
 CREATE TABLE `users`
@@ -7,10 +7,10 @@ CREATE TABLE `users`
     `email`     varchar(255) NOT NULL,
     `full_name` varchar(255) NOT NULL,
     `password`  varchar(255) NOT NULL,
-    `user_name` varchar(255) NOT NULL,
+    `username` varchar(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`),
-    UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`user_name`)
+    UNIQUE KEY `UK_k8d0f2n7n88w1a16yhua64onx` (`username`)
 );
 
 CREATE TABLE `categories`

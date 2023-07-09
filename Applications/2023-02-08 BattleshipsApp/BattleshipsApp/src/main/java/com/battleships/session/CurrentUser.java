@@ -17,7 +17,7 @@ public class CurrentUser {
 
     private Long id;
 
-    private String userName;
+    private String username;
 
     private String email;
 
@@ -33,7 +33,7 @@ public class CurrentUser {
 
     public void clear() {
         id = null;
-        userName = null;
+        username = null;
         email = null;
         loggedIn = false;
     }

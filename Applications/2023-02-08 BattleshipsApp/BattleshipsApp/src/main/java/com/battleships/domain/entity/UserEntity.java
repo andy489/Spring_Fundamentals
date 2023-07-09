@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 public class UserEntity extends BaseEntity {
 
     @Column(nullable = false, unique = true)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String fullName;
@@ -31,7 +31,7 @@ public class UserEntity extends BaseEntity {
     @Override
     public String toString() {
         return "UserEntity{" +
-                "userName='" + userName + '\'' +
+                "userName='" + username + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : null) + '\'' +
                 ", email='" + email + '\'' +

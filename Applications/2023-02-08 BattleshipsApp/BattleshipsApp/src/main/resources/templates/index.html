@@ -3,14 +3,13 @@
 
 <head>
     <title>Battleships</title>
-    <th:block th:insert="~{/fragments/head}" />
+    <th:block th:insert="~{/fragments/head}"/>
 </head>
 
-<body class="body-main">
+<body>
+<div class="wrapper">
 
-    <header>
-        <nav th:replace="~{/fragments/navbar}"></nav>
-    </header>
+    <th:block th:insert="~{/fragments/navbar}"></th:block>
 
     <main role="main">
         <div class="jumbotron">
@@ -40,6 +39,7 @@
         <footer th:replace="~{/fragments/footer}"></footer>
 
     </main>
+</div>
 </body>
 
 </html>
