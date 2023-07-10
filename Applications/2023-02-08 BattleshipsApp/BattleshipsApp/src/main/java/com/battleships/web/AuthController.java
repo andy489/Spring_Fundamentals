@@ -48,7 +48,8 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("userRegisterModel", userRegisterDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterModel", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterModel",
+                            bindingResult);
 
             return "redirect:/auth/register";
         }
@@ -72,7 +73,8 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("userLoginModel", userLoginDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginModel", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginModel",
+                            bindingResult);
 
             return "redirect:/auth/login";
         }

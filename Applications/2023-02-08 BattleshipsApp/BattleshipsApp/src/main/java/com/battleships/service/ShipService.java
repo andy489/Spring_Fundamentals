@@ -69,9 +69,11 @@ public class ShipService {
         List<ShipDto> listShipsDto;
 
         if (logged) {
-            listShipsDto = mapper.toDtoList(shipRepository.findAllByOwnerId(currentUser.getId()).orElseThrow(NoSuchElementException::new));
+            listShipsDto = mapper.toDtoList(shipRepository.findAllByOwnerId(currentUser.getId())
+                    .orElseThrow(NoSuchElementException::new));
         } else {
-            listShipsDto = mapper.toDtoList(shipRepository.findAllByOwnerIdNot(currentUser.getId()).orElseThrow(NoSuchElementException::new));
+            listShipsDto = mapper.toDtoList(shipRepository.findAllByOwnerIdNot(currentUser.getId())
+                    .orElseThrow(NoSuchElementException::new));
         }
 
         return UserWithShipsDto.of(byId, listShipsDto);

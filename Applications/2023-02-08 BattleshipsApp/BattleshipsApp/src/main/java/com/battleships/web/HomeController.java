@@ -65,7 +65,8 @@ public class HomeController {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("battleModel", battleDto);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.battleModel", bindingResult);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.battleModel", bindingResult);
 
             return "redirect:home";
         }

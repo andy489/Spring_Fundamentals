@@ -42,7 +42,8 @@ public class AuthService {
     }
 
     public void login(UserLoginDto userLoginDto) {
-        UserEntity existingUser = userRepository.findByUsername(userLoginDto.getUsername()).orElseThrow(NoSuchFieldError::new);
+        UserEntity existingUser = userRepository.findByUsername(userLoginDto.getUsername())
+                .orElseThrow(NoSuchFieldError::new);
         login(existingUser);
     }
 

@@ -51,7 +51,8 @@ public class ShipController {
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("shipAddModel", shipAddDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.shipAddModel", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.shipAddModel",
+                            bindingResult);
 
             return "redirect:/ships/add";
         }
