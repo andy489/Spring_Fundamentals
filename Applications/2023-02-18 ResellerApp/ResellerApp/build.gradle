@@ -14,18 +14,9 @@ plugins {
     id "org.flywaydb.flyway" version "9.8.1"
 }
 
-flyway {
-    url = 'jdbc:mysql://localhost:3306/reseller'
-    user = 'root'
-    password = 'root'
-    schemas = ['reseller']
-    locations = ['classpath:db/migration']
-    cleanDisabled = false
-}
-
 group = 'com.reseller'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '19.0.2'
+sourceCompatibility = '17.0.1'
 
 configurations {
     compileOnly {

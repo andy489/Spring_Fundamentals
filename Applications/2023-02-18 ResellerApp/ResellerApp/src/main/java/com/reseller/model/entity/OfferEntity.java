@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,8 @@ import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
-@Entity(name = "offers")
+@Entity
+@Table(name = "offers")
 @Getter
 @Setter
 @Accessors(chain = true)

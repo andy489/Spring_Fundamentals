@@ -60,7 +60,8 @@ public class OfferService {
 
         offerModel.setMyOffers(offerRepository.findByOwnerId(currentId).stream().map(mapper::toDto).toList());
         offerModel.setBoughtOffers(offerRepository.findByBuyerId(currentId).stream().map(mapper::toDto).toList());
-        offerModel.setOtherOffers(offerRepository.findByOwnerIdNotAndBuyerIdEquals(currentId, null).stream().map(mapper::toDto).toList());
+        offerModel.setOtherOffers(offerRepository.findByOwnerIdNotAndBuyerIdEquals(currentId, null)
+                .stream().map(mapper::toDto).toList());
 
         return offerModel;
     }
