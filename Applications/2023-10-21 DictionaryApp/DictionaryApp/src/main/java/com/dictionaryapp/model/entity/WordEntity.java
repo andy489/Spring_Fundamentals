@@ -1,6 +1,6 @@
 package com.dictionaryapp.model.entity;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -34,6 +34,7 @@ public class WordEntity extends GenericEntity {
     @ManyToOne
     private LanguageEntity language;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "user_id")
     private UserEntity addedBy;
 }
