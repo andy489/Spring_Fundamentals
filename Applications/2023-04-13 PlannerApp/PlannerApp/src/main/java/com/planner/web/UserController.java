@@ -3,6 +3,7 @@ package com.planner.web;
 import com.planner.model.dto.UserLoginDto;
 import com.planner.model.dto.UserRegisterDto;
 import com.planner.service.UserService;
+import com.planner.session.CurrentUser;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping(path = "/users")
 public class UserController extends GenericController {
 
     private final UserService userService;
+    private final CurrentUser currentUser;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CurrentUser currentUser) {
         this.userService = userService;
+        this.currentUser = currentUser;
     }
 
     @ModelAttribute(name = "userRegisterModel")
@@ -35,13 +38,13 @@ public class UserController extends GenericController {
         return new UserLoginDto();
     }
 
-    @GetMapping("/register")
+    @GetMapping(path = "/register")
     public ModelAndView getRegister() {
 
         return super.view("user/register");
     }
 
-    @GetMapping("/login")
+    @GetMapping(path = "/login")
     public ModelAndView getLogin() {
 
         return super.view("user/login");
@@ -51,12 +54,16 @@ public class UserController extends GenericController {
     public ModelAndView postRegister(
             @Valid @ModelAttribute(name = "userRegisterModel") UserRegisterDto userRegisterDto,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
-    ) {
+            RedirectAttributes redirectAttributes) {
+
+        if (currentUser.isLoggedIn()) {
+            return super.redirect("/home");
+        }
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterModel", userRegisterDto);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterModel", bindingResult);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.userRegisterModel", bindingResult);
 
             return super.redirect("register");
         }
@@ -70,8 +77,12 @@ public class UserController extends GenericController {
     public ModelAndView postLogin(
             @Valid @ModelAttribute(name = "userLoginModel") UserLoginDto userLoginDto,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
-    ) {
+            RedirectAttributes redirectAttributes) {
+
+        if (currentUser.isLoggedIn()) {
+            return super.redirect("/home");
+        }
+
         if (bindingResult.hasErrors()) {
 
             redirectAttributes.addFlashAttribute("userLoginModel", userLoginDto)
@@ -87,6 +98,10 @@ public class UserController extends GenericController {
 
     @GetMapping("/logout")
     public ModelAndView getLogout() {
+
+        if (!currentUser.isLoggedIn()) {
+            return super.redirect("/index");
+        }
 
         userService.logout();
 

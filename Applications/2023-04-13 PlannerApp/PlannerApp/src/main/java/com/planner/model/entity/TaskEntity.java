@@ -41,6 +41,5 @@ public class TaskEntity extends GenericEntity {
 
     public void assignTo(UserEntity assignedTo) {
         this.assignedTo = assignedTo;
-
     }
 }

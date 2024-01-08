@@ -29,8 +29,7 @@ public class UserService {
             UserRepository userRepository,
             CurrentUser currentUser,
             MapStructMapper mapper,
-            PasswordEncoder encoder
-    ) {
+            PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.currentUser = currentUser;
         this.mapper = mapper;
@@ -39,12 +38,10 @@ public class UserService {
 
     public Optional<UserEntity> getByUsername(String username) {
 
-
         return userRepository.findByUsername(username);
     }
 
     public Optional<UserEntity> getByEmail(String email) {
-
 
         return userRepository.findByEmail(email);
     }

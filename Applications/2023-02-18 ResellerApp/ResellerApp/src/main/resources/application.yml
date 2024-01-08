@@ -2,8 +2,8 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/reseller?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
-    username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASS:root}
+    username: ${DB_USER:root}
+    password: ${DB_PASS:root}
   thymeleaf:
     cache: false
     mode: HTML
@@ -34,7 +34,7 @@ spring:
         enabled: true
   flyway:
     schemas: reseller
-    user: ${FLYWAY_DB_USER:root}
-    password: ${FLYWAY_DB_PASS:root}
+    user: ${DB_USER:root}
+    password: ${DB_PASS:root}
     locations: classpath:db/migration
     baseline-on-migrate: true

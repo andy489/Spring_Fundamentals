@@ -6,18 +6,31 @@
 <header th:replace="~{fragments/commons::header}"></header>
 <main>
     <div class="container bg-blur rounded mt-5 ">
-        <h1>Welcome to Planner App</h1>
+        <h1 th:with="isLoggedIn=${@currentUser.isLoggedIn()}">
+            Welcome to Planner App,
+            <span th:if="${isLoggedIn}"
+                  th:text="${@currentUser.getUsername()}"
+                  class="text-primary">{username}</span>
+            <span th:unless="${isLoggedIn}"
+                  class="text-secondary">Anonymous</span>
+
+            <span th:if="${isLoggedIn}">!</span>
+            <span th:unless="${isLoggedIn}">.</span>
+        </h1>
         <hr class="my-3 bg-white w-50"/>
 
         <p class="h4">
             Planner App by Softuni is designed to help individuals and teams manage their workflow efficiently.
-            It provides a user-friendly interface with a customizable Kanban board that allows users to create and move cards representing their
+            It provides a user-friendly interface with a customizable Kanban board that allows users to create and move
+            cards representing their
             tasks or work items across different stages of their workflow.
             <br>
             The App offers features such as the ability to set due dates, add description or comments,
             and assign tasks. It incorporates different priorities of the tasks,
-            such as "Urgent" "Important" and "Low". The application provides real-time collaboration, enabling team members to work together more
-            efficiently and effectively.</p>
+            such as "Urgent" "Important" and "Low". The application provides real-time collaboration, enabling team
+            members to work together more
+            efficiently and effectively.
+        </p>
         <hr class="my-3 bg-white w-75"/>
 
         <h3>

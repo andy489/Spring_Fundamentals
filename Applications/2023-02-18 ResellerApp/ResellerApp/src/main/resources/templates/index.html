@@ -6,7 +6,8 @@
 <body>
     <header th:replace="~{fragments/commons::nav}"></header>
     <main>
-        <div class="container bg-blur rounded mt-5" th:with="isLoggedIn=${@currentUser.isLoggedIn()}">
+        <div class="container bg-blur rounded mt-5"
+             th:with="isLoggedIn=${@currentUser.isLoggedIn()}">
             <h1>Welcome to Reseller App,
                 <span th:if="${isLoggedIn}"
                       th:text="${@currentUser.getUsername()}"
@@ -14,8 +15,8 @@
                 <span th:unless="${isLoggedIn}"
                       class="text-secondary">Anonymous</span>
 
-                <span th:if="${isLoggedIn}">.</span>
-                <span th:unless="${isLoggedIn}">!</span>
+                <span th:if="${isLoggedIn}">!</span>
+                <span th:unless="${isLoggedIn}">.</span>
             </h1>
             <hr class="my-3 bg-white w-50" />
 

@@ -33,8 +33,8 @@ public class TaskService {
             MapStructMapper mapper,
             PriorityService priorityService,
             UserService userService,
-            CurrentUser currentUser
-    ) {
+            CurrentUser currentUser) {
+
         this.taskRepository = taskRepository;
         this.mapper = mapper;
         this.priorityService = priorityService;

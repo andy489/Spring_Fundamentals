@@ -26,8 +26,7 @@ public class TaskController extends GenericController {
     @Autowired
     public TaskController(
             TaskService taskService,
-            CurrentUser currentUser
-    ) {
+            CurrentUser currentUser) {
         this.taskService = taskService;
         this.currentUser = currentUser;
     }
@@ -50,8 +49,8 @@ public class TaskController extends GenericController {
     public ModelAndView postAddTask(
             @Valid @ModelAttribute(name = "taskAddModel") TaskAddDto taskAddDto,
             BindingResult bindingResult,
-            RedirectAttributes redirectAttributes
-    ) {
+            RedirectAttributes redirectAttributes) {
+
         if (!currentUser.isLoggedIn()) {
             return super.redirect("/users/login");
         }

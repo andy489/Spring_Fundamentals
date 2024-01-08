@@ -5,7 +5,6 @@ import com.planner.session.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -18,13 +17,12 @@ public class HomeController extends GenericController {
     @Autowired
     public HomeController(
             CurrentUser currentUser,
-            TaskService taskService
-    ) {
+            TaskService taskService) {
         this.currentUser = currentUser;
         this.taskService = taskService;
     }
 
-    @GetMapping("/home")
+    @GetMapping(path = "/home")
     public ModelAndView getHome(ModelAndView mav) {
         if (!currentUser.isLoggedIn()) {
             return super.redirect("/users/login");
@@ -35,7 +33,7 @@ public class HomeController extends GenericController {
         return super.view("home", mav);
     }
 
-    @GetMapping({"/", "/index"})
+    @GetMapping(path = {"/", "/index"})
     public ModelAndView getIndex() {
 
         return super.view("index");

@@ -16,7 +16,7 @@ plugins {
 
 group = 'com.reseller'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17.0.1'
+sourceCompatibility = '17.0.4'
 
 configurations {
     compileOnly {
@@ -47,6 +47,8 @@ dependencies {
 
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class PriorityEntity extends GenericEntity{
+public class PriorityEntity extends GenericEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

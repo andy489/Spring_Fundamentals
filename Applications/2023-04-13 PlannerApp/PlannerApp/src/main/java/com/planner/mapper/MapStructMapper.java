@@ -22,7 +22,7 @@ public interface MapStructMapper {
 
 
     default TaskView toTaskView(TaskEntity taskEntity){
-        TaskView taskView = toView(taskEntity); // map as much as you can
+        TaskView taskView = toView(taskEntity); // map as much as we can
         taskView.setPriority(taskEntity.getPriority().getName().getDisplayName());
         return taskView;
     }

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+
+    <div class="container bg-blur rounded mt-3 mb-4"
+         th:object="${wordsHomeModel}">
+        <h1>All words</h1>
+        <div class="row mt-3 mb-3">
+
+            <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto"
+                 th:with="deWords=*{words['DE']} == null ? *{emptyList}: *{words['DE']}">
+                <h3 class="mySticky bg-gray text-dark rounded"
+                    th:text="'German: ' + ${#lists.size(deWords)}">German: {germanWordsCount}</h3>
+                <div class="mt-3 rounded badge-warning"
+                     th:each="w : ${deWords}">
+                    <img class="mr-2" th:src="@{/img/german.png}" alt="Flag" width="20px" height="20px" src="">
+                    <span th:text="${w.term} + ': ' + ${w.translation}">{germanTerm}: {translation}</span>
+                    <br>
+                    <span th:text="'Example: ' + ${w.example}">Example: {example}</span>
+                    <br>
+                    <span th:text="'Added by: ' + ${w.addedBy} + ' on ' + ${#dates.format(w.inputDate, 'dd-MM-yyyy')}">
+                        Added by: {username} on {inputDate}
+                    </span>
+                    <form th:method="post"
+                          th:action="@{/words/remove/{wordId}(wordId=${w.id})}"
+                          class="d-inline">
+                        <button class="btn btn-link ml-3 text-danger font-weight-bold">Remove</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto"
+                 th:with="esWords=*{words['ES']} == null ? *{emptyList}: *{words['ES']}">
+                <h3 class="mySticky bg-gray text-dark rounded"
+                    th:text="'Spanish: ' + ${#lists.size(esWords)}">Spanish: {spanishWordsCount}</h3>
+                <div class="mt-3 rounded badge-secondary"
+                     th:each="w : ${esWords}">
+                    <img class="mr-2" th:src="@{/img/spanish.png}" alt="Flag" width="20px" height="20px" src="">
+                    <span th:text="${w.term} + ': ' + ${w.translation}">{spanishTerm}: {translation}</span>
+                    <br>
+                    <span th:text="'Example: ' + ${w.example}">Example: {example}</span>
+                    <br>
+                    <span th:text="'Added by: ' + ${w.addedBy} + ' on ' + ${#dates.format(w.inputDate, 'dd-MM-yyyy')}">
+                        Added by: {username} on {inputDate}
+                    </span>
+                    <form th:method="post"
+                          th:action="@{/words/remove/{wordId}(wordId=${w.id})}"
+                          class="d-inline">
+                        <button class="btn btn-link p-0 ml-3 text-danger font-weight-bold">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 mb-3">
+            <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto"
+                 th:with="frWords=*{words['FR']} == null ? *{emptyList}: *{words['FR']}">
+                <h3 class="mySticky bg-gray text-dark rounded"
+                    th:text="'French: ' + ${#lists.size(frWords)}">French: {frenchWordsCount}</h3>
+                <div class="mt-3 rounded badge-info"
+                     th:each="w : ${frWords}">
+                    <img class="mr-2" th:src="@{/img/french.png}" alt="Flag" width="20px" height="20px" src="">
+                    <span th:text="${w.term} + ': ' + ${w.translation}">{frenchTerm}: {translation}</span>
+                    <br>
+                    <span th:text="'Example: ' + ${w.example}">Example: {example}</span>
+                    <br>
+                    <span th:text="'Added by: ' + ${w.addedBy} + ' on ' + ${#dates.format(w.inputDate, 'dd-MM-yyyy')}">
+                        Added by: {username} on {inputDate}
+                    </span>
+                    <form th:method="post"
+                          th:action="@{/words/remove/{wordId}(wordId=${w.id})}"
+                          class="d-inline">
+                        <button class="btn btn-link ml-3 text-danger font-weight-bold">Remove</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-5 bg-dark rounded m-auto" style="height: 30vh; overflow: auto"
+                 th:with="itWords=*{words['IT']} == null ? *{emptyList}: *{words['IT']}">
+                <h3 class="mySticky bg-gray text-dark rounded"
+                    th:text="'Italian: ' + ${#lists.size(itWords)}">Italian: {italianWordsCount}</h3>
+                <div class="mt-3 rounded badge-success"
+                     th:each="w : ${itWords}">
+                    <img class="mr-2" th:src="@{/img/italian.png}" alt="Flag" width="20px" height="20px" src="">
+                    <span th:text="${w.term} + ': ' + ${w.translation}">{italianTerm}: {translation}</span>
+                    <br>
+                    <span th:text="'Example: ' + ${w.example}">Example: {example}</span>
+                    <br>
+                    <span th:text="'Added by: ' + ${w.addedBy} + ' on ' + ${#dates.format(w.inputDate, 'dd-MM-yyyy')}">
+                        Added by: {username} on {inputDate}
+                    </span>
+                    <form th:method="post"
+                          th:action="@{/words/remove/{wordId}(wordId=${w.id})}"
+                          class="d-inline">
+                        <button class="btn btn-link ml-3 text-danger font-weight-bold">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form th:method="post"
+              th:action="@{/words/remove-all}"
+              th:if="*{allWordsCount} > 0">
+            <button class="btn btn-danger"
+                    th:text="'Remove all ' + *{allWordsCount} + ' words'">
+                Remove all {allWordsCount} words
+            </button>
+        </form>
+        <form th:unless="*{allWordsCount} > 0">
+            <button class="btn disabled">
+                No words for removal
+            </button>
+        </form>
+    </div>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

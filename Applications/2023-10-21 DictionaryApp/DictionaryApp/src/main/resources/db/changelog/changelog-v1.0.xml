@@ -1,0 +1,122 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                                    http://www.liquibase.org/xml/ns/pro
+                                    http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd
+                                    http://www.liquibase.org/xml/ns/dbchangelog
+                                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- https://dba-presents.com/liquibase/216-liquibase-3-6-x-data-types-mapping-table -->
+
+    <changeSet author="andreystoev (generated)" id="1704054696716-1">
+        <createTable tableName="languages">
+            <column name="id" type="VARCHAR(36)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="TINYTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="language_name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-2">
+        <createTable tableName="users">
+            <column name="id" type="VARCHAR(36)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-3">
+        <createTable tableName="words">
+            <column name="id" type="VARCHAR(36)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="example" type="VARCHAR(255)"/>
+            <column name="input_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="term" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="translation" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="added_by_id" type="VARCHAR(36)"/>
+            <column name="language_id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-4">
+        <createIndex indexName="FKdxi37ali31iajtcxc041wmmfr" tableName="words">
+            <column name="added_by_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-5">
+        <createIndex indexName="FKjsgprkeo59pgfrw2peuyrmqux" tableName="words">
+            <column name="language_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-6">
+        <addForeignKeyConstraint baseColumnNames="added_by_id" baseTableName="words"
+                                 constraintName="FKdxi37ali31iajtcxc041wmmfr" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704054696716-7">
+        <addForeignKeyConstraint baseColumnNames="language_id" baseTableName="words"
+                                 constraintName="FKjsgprkeo59pgfrw2peuyrmqux" deferrable="false"
+                                 initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+                                 referencedColumnNames="id" referencedTableName="languages" validate="true"/>
+    </changeSet>
+
+    <changeSet author="andy489" id="31">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="myData/languages.csv" quotchar="&quot;"
+                  separator="," tableName="languages">
+            <column header="id" name="id" type="VARCHAR(36)"/>
+            <column header="language_name" name="language_name" type="STRING"/>
+            <column header="description" name="description" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="andy489" id="32">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="myData/users.csv" quotchar="&quot;"
+                  separator="," tableName="users">
+            <column header="id" name="id" type="VARCHAR(36)"/>
+            <column header="email" name="email" type="VARCHAR(255)"/>
+            <column header="password" name="password" type="VARCHAR(255)"/>
+            <column header="username" name="username" type="VARCHAR(255)"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="andy489" id="33">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="myData/words.csv" quotchar="&quot;"
+                  separator="," tableName="words">
+            <column header="id" name="id" type="VARCHAR(36)"/>
+            <column header="example" name="example" type="VARCHAR(255)"/>
+            <column header="input_date" name="input_date" type="datetime"/>
+            <column header="term" name="term" type="VARCHAR(255)"/>
+            <column header="translation" name="translation" type="VARCHAR(255)"/>
+            <column header="added_by_id" name="added_by_id" type="VARCHAR(36)"/>
+            <column header="language_id" name="language_id" type="VARCHAR(36)"/>
+        </loadData>
+    </changeSet>
+
+
+
+</databaseChangeLog>

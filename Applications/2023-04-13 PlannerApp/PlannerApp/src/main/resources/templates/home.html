@@ -64,8 +64,10 @@
                                     <a th:text="${t.priority}">{priority}</a>
                                 </td>
                                 <td>
-                                    <a th:text="'Due date: ' + ${#dates.format(t.dueDate, 'yyyy-MM-dd')}">Due Date:
-                                        {dueDate}</a></td>
+                                    <a th:text="'Due date: ' + ${#dates.format(t.dueDate, 'yyyy-MM-dd')}">
+                                        Due Date: {dueDate}
+                                    </a>
+                                </td>
                                 <td>
                                     <a class="ml-3" th:href="@{/tasks/assign/{taskId}(taskId=${t.id})}">
                                         <img th:src="@{/img/assign-to-me-button.png}" height="35px">
