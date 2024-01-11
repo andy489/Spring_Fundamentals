@@ -20,8 +20,7 @@ CREATE TABLE public.moods
     name        character varying(255) NOT NULL
 );
 
-ALTER TABLE public.moods
-    OWNER TO andreystoev;
+ALTER TABLE public.moods OWNER TO postgres;
 
 CREATE SEQUENCE public.moods_id_seq
     START WITH 1
@@ -30,8 +29,7 @@ CREATE SEQUENCE public.moods_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.moods_id_seq
-    OWNER TO andreystoev;
+ALTER TABLE public.moods_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.moods_id_seq OWNED BY public.moods.id;
 
@@ -43,8 +41,7 @@ CREATE TABLE public.posts
     mood_id    bigint
 );
 
-ALTER TABLE public.posts
-    OWNER TO andreystoev;
+ALTER TABLE public.posts OWNER TO postgres;
 
 CREATE SEQUENCE public.posts_id_seq
     START WITH 1
@@ -53,8 +50,7 @@ CREATE SEQUENCE public.posts_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.posts_id_seq
-    OWNER TO andreystoev;
+ALTER TABLE public.posts_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
 
@@ -64,8 +60,7 @@ CREATE TABLE public.posts_likes
     likes_id       bigint NOT NULL
 );
 
-ALTER TABLE public.posts_likes
-    OWNER TO andreystoev;
+ALTER TABLE public.posts_likes OWNER TO postgres;
 
 CREATE TABLE public.users
 (
@@ -75,8 +70,7 @@ CREATE TABLE public.users
     username character varying(255) NOT NULL
 );
 
-ALTER TABLE public.users
-    OWNER TO andreystoev;
+ALTER TABLE public.users OWNER TO postgres;
 
 CREATE SEQUENCE public.users_id_seq
     START WITH 1
@@ -85,8 +79,7 @@ CREATE SEQUENCE public.users_id_seq
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.users_id_seq
-    OWNER TO andreystoev;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 

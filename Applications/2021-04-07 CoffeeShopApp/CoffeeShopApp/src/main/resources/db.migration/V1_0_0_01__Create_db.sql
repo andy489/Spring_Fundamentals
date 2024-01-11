@@ -4,14 +4,14 @@ CREATE TABLE public.categories
     name        character varying(255) NOT NULL,
     needed_time integer                NOT NULL
 );
-ALTER TABLE public.categories OWNER TO andreystoev;
+ALTER TABLE public.categories OWNER TO postgres;
 
 CREATE SEQUENCE public.categories_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE CACHE 1;
-ALTER TABLE public.categories_id_seq OWNER TO andreystoev;
+ALTER TABLE public.categories_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.categories_id_seq OWNED BY public.categories.id;
 
 CREATE TABLE public.users
@@ -23,7 +23,7 @@ CREATE TABLE public.users
     password   character varying(255) NOT NULL,
     username   character varying(255) NOT NULL
 );
-ALTER TABLE public.users OWNER TO andreystoev;
+ALTER TABLE public.users OWNER TO postgres;
 
 CREATE SEQUENCE public.users_id_seq
     START WITH 1
@@ -31,7 +31,7 @@ CREATE SEQUENCE public.users_id_seq
     NO MINVALUE
     NO MAXVALUE CACHE 1;
 
-ALTER TABLE public.users_id_seq OWNER TO andreystoev;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 CREATE TABLE public.orders
@@ -45,7 +45,7 @@ CREATE TABLE public.orders
     employee_id bigint
 );
 
-ALTER TABLE public.orders OWNER TO andreystoev;
+ALTER TABLE public.orders OWNER TO postgres;
 
 CREATE SEQUENCE public.orders_id_seq
     START WITH 1
@@ -53,7 +53,7 @@ CREATE SEQUENCE public.orders_id_seq
     NO MINVALUE
     NO MAXVALUE CACHE 1;
 
-ALTER TABLE public.orders_id_seq OWNER TO andreystoev;
+ALTER TABLE public.orders_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
 
 

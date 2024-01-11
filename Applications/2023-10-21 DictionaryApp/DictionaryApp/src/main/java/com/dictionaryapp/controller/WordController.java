@@ -19,8 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("words")
-public class WordController extends GenericController{
+@RequestMapping("/words")
+public class WordController extends GenericController {
 
     private final WordService wordService;
 

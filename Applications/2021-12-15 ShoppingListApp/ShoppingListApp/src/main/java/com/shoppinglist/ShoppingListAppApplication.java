@@ -1,14 +1,7 @@
-package com;
+package com.shoppinglist;
 
-import com.shoppinglist.model.enumerated.CategoryEnum;
-import com.shoppinglist.model.view.ProductsByCategoryView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class ShoppingListAppApplication

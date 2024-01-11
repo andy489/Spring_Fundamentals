@@ -1,0 +1,6 @@
+"id","email","password","username"
+"1","admin@gmail.com","$2a$10$MgsvGPbIbh/YBGpsHBy/y.cCSzWyvwKh.OicNiJTogRCdio.FqMdK","admin"
+"2","moderator@gmail.com","$2a$10$0KJh3RNMqBrEMUMUPATyruuby9.dOPVOEv3HD97xFrxB4NyYMvCZG","moderator"
+"3","user@gmail.com","$2a$10$jwW5FuTKpkeK3rrrp.SR7O9QqDOUCNwCO1SqUft9dV87PgD2HpuKy","user"
+"4","pesho@gmail.com","$2a$10$m73rsghb8FRxc7.yVyzuRed7pSgUiMae199Q1M7.4vluzaVkQAyae","pesho"
+"5","asd@asd","$2a$10$t6dfzeZlnzN2L4JNhfKHKeBtz00BELJ.F4H4QHSnuJmehu2YcMq8S","asd"

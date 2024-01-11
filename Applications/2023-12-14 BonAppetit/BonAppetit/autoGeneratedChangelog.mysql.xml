@@ -1,0 +1,86 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="andreystoev (generated)" id="1704990344059-1">
+        <createTable tableName="categories">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="TINYTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="ENUM(9)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-2">
+        <createTable tableName="recipes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ingredients" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-3">
+        <createTable tableName="user_recipe_favourite">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="recipe_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-4">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-5">
+        <createIndex indexName="FK6wb50tfk9lq1am8j9gl69pec1" tableName="recipes">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-6">
+        <createIndex indexName="FKlc3x6yty3xsupx80hqbj9ayos" tableName="recipes">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-7">
+        <createIndex indexName="FKqynllt552q5229kp2uaaxsohi" tableName="user_recipe_favourite">
+            <column name="recipe_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-8">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="recipes" constraintName="FK6wb50tfk9lq1am8j9gl69pec1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="categories" validate="true"/>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-9">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="recipes" constraintName="FKlc3x6yty3xsupx80hqbj9ayos" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-10">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_recipe_favourite" constraintName="FKnn31xx96iu1rr91b0f1txmebw" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="andreystoev (generated)" id="1704990344059-11">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="user_recipe_favourite" constraintName="FKqynllt552q5229kp2uaaxsohi" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="recipes" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

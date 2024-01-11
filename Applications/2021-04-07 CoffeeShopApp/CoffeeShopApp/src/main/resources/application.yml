@@ -4,8 +4,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/coffee_shop
-    username: andreystoev
-    password: password
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:root}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     #    hibernate:
@@ -22,3 +22,14 @@ spring:
   flyway:
     locations: classpath:db.migration
     baseline-on-migrate: true
+
+
+
+# To list any process listening to the port 8080:
+# lsof -i:8080
+
+
+# brew services stop postgresql@15
+
+# PostgreSQL 16
+# pass root

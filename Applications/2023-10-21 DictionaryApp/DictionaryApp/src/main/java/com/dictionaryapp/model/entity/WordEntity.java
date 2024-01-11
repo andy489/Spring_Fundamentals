@@ -30,8 +30,8 @@ public class WordEntity extends GenericEntity {
     @Column(nullable = false)
     private Date inputDate;
 
-    @JoinColumn(nullable = false)
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(nullable = false, name = "language_id")
     private LanguageEntity language;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
