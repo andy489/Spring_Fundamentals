@@ -1,3 +1,5 @@
+#### Adding liquibase to an_existing Spring project
+
 1. Download `mysql-connector-j-8.0.32.jar` or higher version from https://dev.mysql.com/downloads/connector/j and add it to lib folder at the level of src.
 
 2. Add `liquibase` dependency in `pom.xml` file if with `maven`:
