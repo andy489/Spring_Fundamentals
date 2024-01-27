@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session</title>
+</head>
+<body>
+
+<form th:action="@{/session}"
+      th:method="post">
+
+    <label for="lang">Language</label>
+    <select name="lang"
+            id="lang">
+
+        <option value="en" th:selected="${lang == 'en'}">English</option>
+        <option value="bg" th:selected="${lang == 'bg'}">Bulgarian</option>
+        <option value="de" th:selected="${lang == 'de'}">German</option>
+        <option value="ru" th:selected="${lang == 'ru'}">Russian</option>
+
+    </select>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

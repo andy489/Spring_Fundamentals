@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="inMemoryUserRepository"
+          class="org.practice.repository.InMemoryUserRepository"/>
+
+    <bean id="fileBasedUserRepository"
+          class="org.practice.repository.FileBasedUserRepository"/>
+
+    <bean id="userService"
+          class="org.practice.service.UserServiceImpl">
+        <constructor-arg type="org.practice.repository.UserRepository"
+                         ref="fileBasedUserRepository"/>
+    </bean>
+
+</beans>

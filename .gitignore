@@ -204,3 +204,7 @@ README.html
 .idea
 .exercism
 .bat
+
+*.bat
+*.gradlew
+
